@@ -1,4 +1,6 @@
 package menu.dao.impl;
 
-public class UserDaoImpl {
+import menu.dao.UserDao;
+
+public class UserDaoImpl implements UserDao {
 }

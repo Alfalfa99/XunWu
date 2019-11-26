@@ -1,4 +1,6 @@
 package menu.dao.impl;
 
-public class MemoDaoImpl {
+import menu.dao.MemoDao;
+
+public class MemoDaoImpl implements MemoDao {
 }

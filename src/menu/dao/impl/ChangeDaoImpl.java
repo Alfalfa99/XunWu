@@ -1,4 +1,6 @@
 package menu.dao.impl;
 
-public class ChangeDaoImpl {
+import menu.dao.ChangeDao;
+
+public class ChangeDaoImpl implements ChangeDao {
 }

@@ -1,4 +1,6 @@
 package menu.dao.impl;
 
-public class EquipmentDaoImpl {
+import menu.dao.EquipmentDao;
+
+public class EquipmentDaoImpl implements EquipmentDao {
 }
