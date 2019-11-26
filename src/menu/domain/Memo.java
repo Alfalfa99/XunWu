@@ -1,10 +1,9 @@
 package menu.domain;
 
-public class change {
+public class Memo {
     private Integer id;
     private Integer equi_id;
-    private String equi_nameo;
-    private String equi_namen;
+    private String last_location;
     private Integer addtime;
 
     public Integer getId() {
@@ -23,20 +22,12 @@ public class change {
         this.equi_id = equi_id;
     }
 
-    public String getEqui_nameo() {
-        return equi_nameo;
+    public String getLast_location() {
+        return last_location;
     }
 
-    public void setEqui_nameo(String equi_nameo) {
-        this.equi_nameo = equi_nameo;
-    }
-
-    public String getEqui_namen() {
-        return equi_namen;
-    }
-
-    public void setEqui_namen(String equi_namen) {
-        this.equi_namen = equi_namen;
+    public void setLast_location(String last_location) {
+        this.last_location = last_location;
     }
 
     public Integer getAddtime() {
@@ -49,11 +40,10 @@ public class change {
 
     @Override
     public String toString() {
-        return "change{" +
+        return "memo{" +
                 "id=" + id +
                 ", equi_id=" + equi_id +
-                ", equi_nameo='" + equi_nameo + '\'' +
-                ", equi_namen='" + equi_namen + '\'' +
+                ", last_location='" + last_location + '\'' +
                 ", addtime=" + addtime +
                 '}';
     }
