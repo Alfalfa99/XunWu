@@ -1,5 +1,6 @@
 package menu.web.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import menu.domain.User;
 import menu.service.UserService;
 import menu.service.impl.UserServiceImpl;
@@ -19,22 +20,16 @@ public class LoginServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         //先判断session中是否存有用户
         HttpSession session = request.getSession();
-        User user1 = new User();
-        user1 = (User)session.getAttribute("user");
+        User user1 = (User)session.getAttribute("user");
 
         //封装请求
-        Map<String, String[]> map = request.getParameterMap();
         //封装User对象
-        User user = new User();
-        try {
-            BeanUtils.populate(user,map);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        String regjson = request.getParameter("regjson");
+        ObjectMapper mapper = new ObjectMapper();
+        User user = mapper.readValue(regjson,User.class);
 
-        if (user1 == null){
+
+        if (user1 == null){//判断是否存在session
             //调用Service层查询是否已注册
             UserService userService = new UserServiceImpl();
             User loginUser = userService.login(user);

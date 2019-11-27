@@ -21,9 +21,8 @@ import java.util.Map;
 public class AddEquiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
-        User user = new User();
         HttpSession session = request.getSession();
-        user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         String json = request.getParameter("addjson");  //addjson里一定要有uuid,设备名
         ObjectMapper mapper = new ObjectMapper();
         Equipment equipment = mapper.readValue(json, Equipment.class);

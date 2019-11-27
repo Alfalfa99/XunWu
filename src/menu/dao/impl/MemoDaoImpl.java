@@ -22,13 +22,13 @@ public class MemoDaoImpl implements MemoDao {
 
     @Override
     public void delete(Integer id) {
-        String sql = "delete from equi where id = ?";
+        String sql = "delete from memo where id = ?";
         template.update(sql, id);
     }
 
     @Override
     public List<Memo> findbyequi_id(Integer id) {
-        String sql = "select * from user where equi_id = ?";
+        String sql = "select * from memo where equi_id = ?";
         List<Memo> memos = template.query(sql, new BeanPropertyRowMapper<>(Memo.class),id);
         return memos;
     }
