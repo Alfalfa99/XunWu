@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.Locale;
 
 public class TimeTransformer {
-    public String getNowTimeStamp(){
+    public Integer getNowTimeStamp(){
         long time = System.currentTimeMillis();
-        String nowTimeStamp = String.valueOf(time/1000);
-        return nowTimeStamp;
+        time/=1000;
+        return (int)time;
     }
 
     public String getFormatTime(String TimeStamp){

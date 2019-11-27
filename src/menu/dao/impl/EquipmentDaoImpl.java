@@ -12,8 +12,8 @@ public class EquipmentDaoImpl implements EquipmentDao {
     @Override
     public void add(Equipment equipment) {
         //添加设备
-        String sql = "insert into equi values(null,?,?,?)";
-        template.update(sql, equipment.getUser_id(), equipment.getEqui_name(), equipment.getUuid(),equipment.getAddtime());
+        String sql = "update equi set equi_name = ? and addtime = ? where equi_uuid = ?";
+        template.update(sql, equipment.getEqui_name(),equipment.getAddtime(),equipment.getUuid());
     }
 
     @Override

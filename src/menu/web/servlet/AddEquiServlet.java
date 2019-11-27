@@ -3,8 +3,9 @@ package menu.web.servlet;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import menu.domain.Equipment;
 import menu.domain.User;
-import menu.service.UserService;
-import menu.service.impl.UserServiceImpl;
+import menu.service.EquipmentService;
+import menu.service.impl.EquipmentServiceImpl;
+import menu.util.TimeTransformer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,28 +15,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-@WebServlet("/findAllEquiServlet")
-public class FindAllEquiServlet extends HttpServlet {
+@WebServlet("/addEquiServlet")
+public class AddEquiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
-        UserService userService = new UserServiceImpl();
-        //把存储在session中的user对象取出来
-        User user;
+        User user = new User();
         HttpSession session = request.getSession();
         user = (User) session.getAttribute("user");
-        List<Equipment> equipment = userService.findbyuser(user.getOpenid());
-
-        Map<String,Object> map = new HashMap<>();
-        for (Equipment equipment1 : equipment) {
-            map.put(equipment1.getEqui_name(),equipment1);
-        }
-
-        //将map转换为json,并传给客户端
+        String json = request.getParameter("addjson");  //addjson里一定要有uuid,设备名
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(response.getWriter(),map);
+        Equipment equipment = mapper.readValue(json, Equipment.class);
+        TimeTransformer timeTransformer = new TimeTransformer();
+        equipment.setAddtime(timeTransformer.getNowTimeStamp());//为equipment增加addtime
+        equipment.setUser_id(user.getOpenid());     //为equipment增加User_id
+        EquipmentService equipmentService = new EquipmentServiceImpl();
+        equipmentService.add(equipment);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
