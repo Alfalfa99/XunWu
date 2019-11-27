@@ -9,9 +9,12 @@ public interface EquipmentDao {
     void add(Equipment equipment);
 
     /**
-     * 删除设备
+     * 根据用户id和设备名删除设备
      */
-    void delete(int id);
+    void delete(Integer user_id, String equi_name);
 
-
+    /**
+     * 根据用户id和设备名更改设备名
+     */
+    void change(Integer user_id, String oldName, String newName);
 }

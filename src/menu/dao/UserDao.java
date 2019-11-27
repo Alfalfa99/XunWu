@@ -15,6 +15,6 @@ public interface UserDao {
     /**
      * 用户拥有的所有设备
      */
-    List<Equipment> findall();
+    List<Equipment> findbyuser(Integer id);
 
 }
