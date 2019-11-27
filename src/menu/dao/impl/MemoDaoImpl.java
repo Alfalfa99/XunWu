@@ -13,7 +13,9 @@ public class MemoDaoImpl implements MemoDao {
 
     @Override
     public void add(Memo memo) {
-
+        //添加记录
+        String sql = "insert into memo values(null,?,?,?)";
+        template.update(sql, memo.getEqui_id(), memo.getLast_location(), memo.getAddtime());
     }
 
     @Override
