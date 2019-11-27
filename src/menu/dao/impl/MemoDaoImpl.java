@@ -1,6 +1,7 @@
 package menu.dao.impl;
 
 import menu.dao.MemoDao;
+import menu.domain.Equipment;
 import menu.domain.Memo;
 import menu.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -26,9 +27,15 @@ public class MemoDaoImpl implements MemoDao {
     }
 
     @Override
-    public List<Memo> findbyid(Integer id) {
+    public List<Memo> findbyequi_id(Integer id) {
         String sql = "select * from user where equi_id = ?";
         List<Memo> memos = template.query(sql, new BeanPropertyRowMapper<>(Memo.class),id);
         return memos;
+    }
+
+    @Override
+    public void updateMemo(Equipment equipment, String newName) {
+        String sql = "update user set name = ? where equi_id = ?";
+        template.update(sql,newName,equipment.getId());
     }
 }
