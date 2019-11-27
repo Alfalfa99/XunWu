@@ -21,8 +21,8 @@ public class EquipmentServiceImpl implements EquipmentService {
     }
 
     @Override
-    public void change(Equipment equipment, String newName) {
-        dao.change(equipment, newName);
-        memoService.updateMemo(equipment,newName);
+    public void change(Equipment equipment) {
+        dao.change(equipment);
+        memoService.updateMemo(equipment);
     }
 }

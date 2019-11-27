@@ -24,5 +24,5 @@ public interface MemoService {
     /**
      * 设备名更改后对该表进行更新
      */
-    void updateMemo(Equipment equipment, String newName);
+    void updateMemo(Equipment equipment);
 }

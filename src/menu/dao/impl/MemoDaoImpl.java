@@ -34,8 +34,8 @@ public class MemoDaoImpl implements MemoDao {
     }
 
     @Override
-    public void updateMemo(Equipment equipment, String newName) {
+    public void updateMemo(Equipment equipment) {
         String sql = "update user set name = ? where equi_id = ?";
-        template.update(sql,newName,equipment.getId());
+        template.update(sql,equipment.getEqui_name(),equipment.getId());
     }
 }

@@ -16,5 +16,5 @@ public interface EquipmentDao {
     /**
      * 根据用户id和设备名更改设备名
      */
-    void change(Equipment equipment, String newName);
+    void change(Equipment equipment);
 }
