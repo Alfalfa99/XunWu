@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/memoLocationServlet")
-public class MemoLocationServlet extends HttpServlet {
+@WebServlet("/addmemoLocationServlet")
+public class AddMemoLocationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
         User user = new User();
