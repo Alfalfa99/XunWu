@@ -6,8 +6,14 @@ import menu.domain.User;
 import java.util.List;
 
 public interface UserDao {
+
     /**
-     * 用户注册
+     * 用户登录
+     */
+    User findUserByOpenid(int openid);
+
+    /**
+     * 添加用户
      * @param user
      */
     void add(User user);

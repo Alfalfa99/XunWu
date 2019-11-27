@@ -1,7 +1,6 @@
 package menu.dao.impl;
 
 import menu.dao.MemoDao;
-import menu.domain.Equipment;
 import menu.domain.Memo;
 import menu.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

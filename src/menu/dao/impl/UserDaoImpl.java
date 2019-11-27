@@ -13,6 +13,19 @@ public class UserDaoImpl implements UserDao {
 
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
 
+
+    @Override
+    public User findUserByOpenid(int openid) {
+        try {
+            String sql = "select * from user where openid = ?";
+            User user = template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), openid);
+            return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @Override
     public void add(User user) {
         //添加用户
