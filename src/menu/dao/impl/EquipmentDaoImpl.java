@@ -17,10 +17,10 @@ public class EquipmentDaoImpl implements EquipmentDao {
     }
 
     @Override
-    public void delete(Integer user_id, String equi_name) {
+    public void delete(Integer id) {
         //删除设备
-        String sql = "delete from equi where user_id = ? and equi_name = ?";
-        template.update(sql, user_id, equi_name);
+        String sql = "delete from equi where id = ?";
+        template.update(sql, id);
     }
 
     @Override

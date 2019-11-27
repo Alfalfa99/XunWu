@@ -17,4 +17,8 @@ public interface UserDao {
      */
     List<Equipment> findbyuser(Integer id);
 
+    /**
+     * 删除用户
+     */
+    void delete(int openid);
 }

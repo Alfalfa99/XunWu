@@ -22,9 +22,16 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<Equipment> findbyuser(Integer id) {
-        //使用JDBC操作数据库...
+        //通过用户id查询所拥有的设备
         String sql = "select * from user where user_id = ?";
         List<Equipment> equipments = template.query(sql, new BeanPropertyRowMapper<>(Equipment.class),id);
         return equipments;
+    }
+
+    @Override
+    public void delete(int openid) {
+        //删除用户
+        String sql = "delete from user where openid = ?";
+        template.update(sql, openid);
     }
 }
