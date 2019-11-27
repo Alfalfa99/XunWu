@@ -24,8 +24,10 @@ public class EquipmentDaoImpl implements EquipmentDao {
     }
 
     @Override
-    public void change(Integer user_id, String oldName, String newName) {
-
+    public void change(Equipment equipment, String newName) {
+        //更改设备名
+        String sql = "update equi set equi_name = ? where user_id = ? and equi_name = ?";
+        template.update(sql, newName, equipment.getUser_id(), equipment.getEqui_name());
     }
 
 }
