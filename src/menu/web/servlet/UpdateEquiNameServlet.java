@@ -19,7 +19,7 @@ import java.io.IOException;
 public class UpdateEquiNameServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
-        String json = request.getParameter("updatejson");
+        String json = request.getHeader("token");
         ObjectMapper mapper = new ObjectMapper();
         Equipment equipment = mapper.readValue(json, Equipment.class);
         EquipmentService equipmentService = new EquipmentServiceImpl();

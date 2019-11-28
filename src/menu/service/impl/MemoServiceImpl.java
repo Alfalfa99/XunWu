@@ -27,7 +27,7 @@ public class MemoServiceImpl implements MemoService {
     }
 
     @Override
-    public void updateMemo(Equipment equipment, String newName) {
-        dao.updateMemo(equipment, newName);
+    public void updateMemo(Equipment equipment) {
+        dao.updateMemo(equipment);
     }
 }

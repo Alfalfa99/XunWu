@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,15 +23,28 @@ public class AddEquiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        String json = request.getParameter("addjson");  //addjson里一定要有uuid,设备名
-        ObjectMapper mapper = new ObjectMapper();
-        Equipment equipment = mapper.readValue(json, Equipment.class);
+        Integer openid = (Integer) session.getAttribute("openid");
+        Equipment equipment = new Equipment();
         TimeTransformer timeTransformer = new TimeTransformer();
         equipment.setAddtime(timeTransformer.getNowTimeStamp());//为equipment增加addtime
-        equipment.setUser_id(user.getOpenid());     //为equipment增加User_id
+        equipment.setUser_id(openid);     //为equipment增加User_id
         EquipmentService equipmentService = new EquipmentServiceImpl();
-        equipmentService.add(equipment);
+        BufferedReader bufferReaderBody = null;
+        try {
+            bufferReaderBody = new BufferedReader(request.getReader());
+            String postData = bufferReaderBody.readLine();
+            ObjectMapper mapper = new ObjectMapper();
+            postData = mapper.writeValueAsString(postData);
+            System.out.println(postData);
+//            postData = postData.substring(3, postData.length() - 1);
+            equipmentService.add(equipment);
+        } catch (IOException e) {
+            throw e;
+        } finally {
+            if (bufferReaderBody != null) {
+                bufferReaderBody.close();
+            }
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

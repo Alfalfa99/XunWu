@@ -23,10 +23,9 @@ public class FindAllEquiServlet extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         UserService userService = new UserServiceImpl();
         //把存储在session中的user对象取出来
-        User user;
         HttpSession session = request.getSession();
-        user = (User) session.getAttribute("user");
-        List<Equipment> equipment = userService.findbyuser(user.getOpenid());
+        Integer openid = (Integer) session.getAttribute("openid");
+        List<Equipment> equipment = userService.findbyuser(openid);
 
         Map<String,Object> map = new HashMap<>();
         for (Equipment equipment1 : equipment) {
