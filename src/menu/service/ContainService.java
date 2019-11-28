@@ -12,4 +12,9 @@ public interface ContainService {
      * 删除关系
      */
     void delete(Integer equi_id);
+
+    /**
+     * 查找该设备是否已经绑定
+     */
+    Contain search(Integer equi_id);
 }

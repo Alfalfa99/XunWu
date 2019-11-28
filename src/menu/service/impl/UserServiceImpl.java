@@ -23,12 +23,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(int openid) {
+    public void delete(Integer openid) {
         dao.delete(openid);
     }
 
     @Override
-    public User findUserByOpenid(int openid) {
+    public User findUserByOpenid(Integer openid) {
         return dao.findUserByOpenid(openid);
     }
 }

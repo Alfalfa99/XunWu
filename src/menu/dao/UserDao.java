@@ -10,7 +10,7 @@ public interface UserDao {
     /**
      * 用户登录
      */
-    User findUserByOpenid(int openid);
+    User findUserByOpenid(Integer openid);
 
     /**
      * 添加用户
@@ -26,5 +26,5 @@ public interface UserDao {
     /**
      * 删除用户
      */
-    void delete(int openid);
+    void delete(Integer openid);
 }

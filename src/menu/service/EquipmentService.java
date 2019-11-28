@@ -23,4 +23,5 @@ public interface EquipmentService {
      * 更该设备名
      */
     void change_name(Integer id, String name);
+
 }

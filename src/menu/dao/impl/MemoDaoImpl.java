@@ -27,7 +27,7 @@ public class MemoDaoImpl implements MemoDao {
 
     @Override
     public List<Map<String,Object>> findbyequi_id(Integer id) {
-        String sql = "select * from memo where equi_id = ?";
+        String sql = "select id, last_location as name, addtime as time from memo where equi_id = ?";
         List<Map<String,Object>> memos = template.queryForList(sql,id);
         return memos;
     }

@@ -22,10 +22,10 @@ public interface UserService {
     /**
      * 删除用户
      */
-    void delete(int openid);
+    void delete(Integer openid);
 
     /**
      * 查询是否有该用户
      */
-    public User findUserByOpenid(int openid);
+    public User findUserByOpenid(Integer openid);
 }

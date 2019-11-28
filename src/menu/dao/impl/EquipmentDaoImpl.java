@@ -17,11 +17,13 @@ public class EquipmentDaoImpl implements EquipmentDao {
     @Override
     public void Wifi_name(Integer equi_id, String name) {
         String sql = "update equipment set equi_name = ? where id = ?";
+        template.update(sql, name, equi_id);
     }
 
     @Override
     public void Wifi_password(Integer equi_id, String password) {
         String sql = "update equipment set equi_name = ? where id = ?";
+        template.update(sql, password, equi_id);
     }
 
     @Override

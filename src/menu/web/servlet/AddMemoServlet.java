@@ -7,7 +7,6 @@ import menu.service.MemoService;
 import menu.service.UserService;
 import menu.service.impl.MemoServiceImpl;
 import menu.service.impl.UserServiceImpl;
-import menu.util.TimeTransformer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +20,7 @@ import java.util.Map;
 @WebServlet("/addMemoServlet")
 public class AddMemoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        TimeTransformer timeTransformer = new TimeTransformer();
+        request.setCharacterEncoding("utf-8");
         String token = request.getHeader("token");
 //        String openid = MD5Utils.convertMD5(token); //MD5转回字符串
         ObjectMapper mapper = new ObjectMapper();
@@ -44,12 +43,15 @@ public class AddMemoServlet extends HttpServlet {
         }
         String id = request.getParameter("id");
         String location = request.getParameter("location");
+        String timeStamp = request.getParameter("timeStamp");
         memo.setEqui_id(Integer.valueOf(id));
-        memo.setAddtime(timeTransformer.getNowTimeStamp());
+        memo.setLast_location(location);
+        memo.setAddtime(Integer.valueOf(timeStamp));
         memoService.add(memo);
         responseMap.put("state",1);
         responseMap.put("id",memo.getId());
         responseMap.put("location",memo.getLast_location());
+        responseMap.put("TimeStamp",memo.getLast_location());
         mapper.writeValue(response.getWriter(), responseMap);
     }
 

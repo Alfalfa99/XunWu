@@ -26,4 +26,5 @@ public class EquipmentServiceImpl implements EquipmentService {
     public void change_name(Integer id, String name) {
         equipmentDao.change_name(id,name);
     }
+
 }

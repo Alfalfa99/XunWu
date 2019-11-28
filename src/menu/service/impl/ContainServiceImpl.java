@@ -17,4 +17,9 @@ public class ContainServiceImpl implements ContainService {
         containDao.delete(equi_id);
     }
 
+    @Override
+    public Contain search(Integer equi_id) {
+        return containDao.search(equi_id);
+    }
+
 }

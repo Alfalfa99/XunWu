@@ -20,6 +20,7 @@ import java.util.Map;
 @WebServlet("/addEquiServlet")
 public class AddEquiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String token = request.getHeader("token");
 //        String openid = MD5Utils.convertMD5(token); //MD5转回字符串
         ObjectMapper mapper = new ObjectMapper();
@@ -41,6 +42,12 @@ public class AddEquiServlet extends HttpServlet {
             return;
         }
         String id = request.getParameter("id");
+        contain =  containService.search(Integer.valueOf(id));
+        if (contain.getEqui_id()!=null){
+            responseMap.put("state",-1);
+            mapper.writeValue(response.getWriter(), responseMap);
+            return;
+        }
         contain.setEqui_id(Integer.valueOf(id));
         contain.setUser_id(user.getId());
         containService.add(contain);

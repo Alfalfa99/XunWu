@@ -13,4 +13,9 @@ public interface ContainDao {
      */
     void delete(Integer equi_id);
 
+    /**
+     * 查询该设备是否已经绑定
+     */
+    Contain search(Integer equi_id);
+
 }

@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
         String encryptedData = request.getParameter("encryptedData");
         //请求微信服务器获取用户openid以及加密秘钥
         test test = new test();
-        System.out.println("111");
         String[] strings = test.main(code);
         String openid = strings[0];
         String session_key = strings[1];
