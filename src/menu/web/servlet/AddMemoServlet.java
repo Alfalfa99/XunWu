@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * 增加丢失记录接口
+ */
 @WebServlet("/addMemoServlet")
 public class AddMemoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 更新丢失记录接口
+ */
 @WebServlet("/updateMemoServlet")
 public class UpdateMemoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

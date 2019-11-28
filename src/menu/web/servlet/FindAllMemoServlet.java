@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 查询该设备的所有丢失记录
+ */
 @WebServlet("/findAllMemoServlet")
 public class FindAllMemoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

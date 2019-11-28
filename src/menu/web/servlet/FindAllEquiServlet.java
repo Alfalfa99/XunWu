@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 登录主页查询该用户所有设备
+ */
 @WebServlet("/findAllEquiServlet")
 public class FindAllEquiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

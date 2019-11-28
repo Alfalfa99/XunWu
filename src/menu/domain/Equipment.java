@@ -6,6 +6,7 @@ public class Equipment {
     String equi_wifipassword;
     Integer equi_uuid;
     Integer addtime;
+    String name;
 
     public Integer getId() {
         return id;
@@ -45,5 +46,13 @@ public class Equipment {
 
     public void setAddtime(Integer addtime) {
         this.addtime = addtime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

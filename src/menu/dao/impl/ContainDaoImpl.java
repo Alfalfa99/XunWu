@@ -30,7 +30,6 @@ public class ContainDaoImpl implements ContainDao {
             Contain contain = template.queryForObject(sql, new BeanPropertyRowMapper<Contain>(Contain.class), equi_id);
             return contain;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }

@@ -22,4 +22,9 @@ public interface EquipmentDao {
      * 更该设备名
      */
     void change_name(Integer id, String name);
+
+    /**
+     * 通过id查看是否有该台设备
+     */
+    Equipment find(Integer id);
 }

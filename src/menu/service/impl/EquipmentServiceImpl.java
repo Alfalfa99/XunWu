@@ -27,4 +27,9 @@ public class EquipmentServiceImpl implements EquipmentService {
         equipmentDao.change_name(id,name);
     }
 
+    @Override
+    public Equipment find(Integer id) {
+        return equipmentDao.find(id);
+    }
+
 }
