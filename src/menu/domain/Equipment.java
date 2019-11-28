@@ -1,11 +1,11 @@
 package menu.domain;
 
 public class Equipment {
-    private Integer id;
-    private Integer user_id;
-    private String equi_name;
-    private Integer uuid;
-    private Integer addtime;
+    Integer id;
+    String equi_wifiname;
+    String equi_wifipassword;
+    Integer equi_uuid;
+    Integer addtime;
 
     public Integer getId() {
         return id;
@@ -15,28 +15,28 @@ public class Equipment {
         this.id = id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public String getEqui_wifiname() {
+        return equi_wifiname;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setEqui_wifiname(String equi_wifiname) {
+        this.equi_wifiname = equi_wifiname;
     }
 
-    public String getEqui_name() {
-        return equi_name;
+    public String getEqui_wifipassword() {
+        return equi_wifipassword;
     }
 
-    public void setEqui_name(String equi_name) {
-        this.equi_name = equi_name;
+    public void setEqui_wifipassword(String equi_wifipassword) {
+        this.equi_wifipassword = equi_wifipassword;
     }
 
-    public Integer getUuid() {
-        return uuid;
+    public Integer getEqui_uuid() {
+        return equi_uuid;
     }
 
-    public void setUuid(Integer uuid) {
-        this.uuid = uuid;
+    public void setEqui_uuid(Integer equi_uuid) {
+        this.equi_uuid = equi_uuid;
     }
 
     public Integer getAddtime() {
@@ -45,16 +45,5 @@ public class Equipment {
 
     public void setAddtime(Integer addtime) {
         this.addtime = addtime;
-    }
-
-    @Override
-    public String toString() {
-        return "Equipment{" +
-                "id=" + id +
-                ", user_id=" + user_id +
-                ", equi_name='" + equi_name + '\'' +
-                ", uuid=" + uuid +
-                ", addtime=" + addtime +
-                '}';
     }
 }

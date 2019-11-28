@@ -1,5 +1,7 @@
 package menu.web.servlet;
 
+import menu.util.MD5Utils;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +13,9 @@ import java.io.IOException;
 public class UpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String token = request.getHeader("token");
-        String id = request.getParameter("")
+        String openid = MD5Utils.convertMD5(token); //MD5转回字符串
+
+        String id = request.getParameter("");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

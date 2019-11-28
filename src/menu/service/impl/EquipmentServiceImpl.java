@@ -1,27 +1,29 @@
 package menu.service.impl;
 
-import menu.dao.ContainDao;
-import menu.dao.impl.ContainDaoImpl;
+import menu.dao.EquipmentDao;
+import menu.dao.impl.EquipmentDaoImpl;
+import menu.domain.Equipment;
 import menu.service.EquipmentService;
-import menu.service.MemoService;
 
 public class EquipmentServiceImpl implements EquipmentService {
-    private ContainDao dao = new ContainDaoImpl();
-    private MemoService memoService = new MemoServiceImpl();
-
+        EquipmentDao equipmentDao = new EquipmentDaoImpl();
     @Override
     public void add(Equipment equipment) {
-        dao.add(equipment);
+        equipmentDao.add(equipment);
     }
 
     @Override
-    public void delete(Integer id) {
-        dao.delete(id);
+    public void Wifi_name(Integer equi_id, String name) {
+        equipmentDao.Wifi_name(equi_id, name);
     }
 
     @Override
-    public void change(Equipment equipment) {
-        dao.change(equipment);
-        memoService.updateMemo(equipment);
+    public void Wifi_password(Integer equi_id, String password) {
+        equipmentDao.Wifi_password(equi_id,password);
+    }
+
+    @Override
+    public void change_name(Integer id, String name) {
+        equipmentDao.change_name(id,name);
     }
 }

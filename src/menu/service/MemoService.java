@@ -3,6 +3,7 @@ package menu.service;
 import menu.domain.Memo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MemoService {
     /**
@@ -18,10 +19,5 @@ public interface MemoService {
     /**
      * 展示该台设备的全部丢失记录
      */
-    List<Memo> findByequi_id(Integer id);
-
-    /**
-     * 设备名更改后对该表进行更新
-     */
-    void updateMemo(Equipment equipment);
+    List<Map<String,Object>> findbyequi_id(Integer id);
 }

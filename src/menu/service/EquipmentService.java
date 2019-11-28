@@ -1,19 +1,26 @@
 package menu.service;
 
+import menu.domain.Equipment;
+
 public interface EquipmentService {
 
     /**
-     * 添加设备
+     * 增加设备
      */
     void add(Equipment equipment);
 
     /**
-     * 删除设备
+     * 更改热点名
      */
-    void delete(Integer id);
+    void Wifi_name(Integer equi_id,String name);
 
     /**
-     * 根据用户id和设备名更改设备名
+     * 更改热点密码
      */
-    void change(Equipment equipment);
+    void Wifi_password(Integer equi_id, String password);
+
+    /**
+     * 更该设备名
+     */
+    void change_name(Integer id, String name);
 }
