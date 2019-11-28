@@ -1,9 +1,9 @@
 package menu.dao;
 
-import menu.domain.Equipment;
 import menu.domain.Memo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MemoDao {
     /**
@@ -19,10 +19,6 @@ public interface MemoDao {
     /**
      * 展示该台设备的全部丢失记录
      */
-    List<Memo> findbyequi_id(Integer id);
+    List<Map<String,Object>> findbyequi_id(Integer id);
 
-    /**
-     * 设备名更改后对该表进行更新
-     */
-    void updateMemo(Equipment equipment);
 }

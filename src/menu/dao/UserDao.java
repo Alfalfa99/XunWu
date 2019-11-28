@@ -1,9 +1,9 @@
 package menu.dao;
 
-import menu.domain.Equipment;
 import menu.domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserDao {
 
@@ -21,7 +21,7 @@ public interface UserDao {
     /**
      * 用户拥有的所有设备
      */
-    List<Equipment> findbyuser(Integer id);
+    List<Map<String,Object>> list(Integer id);
 
     /**
      * 删除用户

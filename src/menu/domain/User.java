@@ -2,7 +2,6 @@ package menu.domain;
 
 public class User {
     private Integer id;
-    private String username;
     private Integer openid;
     private Integer addtime;
 
@@ -12,14 +11,6 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public Integer getOpenid() {
@@ -42,7 +33,6 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
                 ", openid=" + openid +
                 ", addtime=" + addtime +
                 '}';

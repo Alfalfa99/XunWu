@@ -1,17 +1,19 @@
 package menu.code;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 import javax.net.ssl.*;
 import java.io.*;
 import java.net.URL;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import com.alibaba.fastjson.*;
 public class test {
 
-    private static final String APPID = "";// 微信应用唯一标识
-    private static final String SECRET = "";
+    private static final String APPID = "wxc55eb61a92436a1b";// 微信应用唯一标识
+    private static final String SECRET = "04d66c08c762073c9cbbaf74b8bcdd77";
 
-    public void main(String code) {
+    public String[] main(String code) {
 
         JSONObject jsonObject = code2sessionKey(code);
 
@@ -21,7 +23,8 @@ public class test {
 
         // 满足UnionID下发条件的情况下，返回
         String unionId = jsonObject.getString("unionid");
-
+        String[] strings = {openId,session_key,unionId};
+        return strings;
     }
 
     /**

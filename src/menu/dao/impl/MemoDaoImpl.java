@@ -1,13 +1,12 @@
 package menu.dao.impl;
 
 import menu.dao.MemoDao;
-import menu.domain.Equipment;
 import menu.domain.Memo;
 import menu.util.JDBCUtils;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
+import java.util.Map;
 
 public class MemoDaoImpl implements MemoDao {
 
@@ -27,15 +26,10 @@ public class MemoDaoImpl implements MemoDao {
     }
 
     @Override
-    public List<Memo> findbyequi_id(Integer id) {
+    public List<Map<String,Object>> findbyequi_id(Integer id) {
         String sql = "select * from memo where equi_id = ?";
-        List<Memo> memos = template.query(sql, new BeanPropertyRowMapper<>(Memo.class),id);
+        List<Map<String,Object>> memos = template.queryForList(sql,id);
         return memos;
     }
 
-    @Override
-    public void updateMemo(Equipment equipment) {
-        String sql = "update user set name = ? where equi_id = ?";
-        template.update(sql,equipment.getEqui_name(),equipment.getId());
-    }
 }

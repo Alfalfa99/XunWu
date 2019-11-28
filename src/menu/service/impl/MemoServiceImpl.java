@@ -2,7 +2,6 @@ package menu.service.impl;
 
 import menu.dao.MemoDao;
 import menu.dao.impl.MemoDaoImpl;
-import menu.domain.Equipment;
 import menu.domain.Memo;
 import menu.service.MemoService;
 

@@ -1,6 +1,5 @@
 package menu.service;
 
-import menu.domain.Equipment;
 import menu.domain.Memo;
 
 import java.util.List;

@@ -1,7 +1,5 @@
 package menu.service;
 
-import menu.domain.Equipment;
-
 public interface EquipmentService {
 
     /**

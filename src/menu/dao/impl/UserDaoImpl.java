@@ -1,13 +1,13 @@
 package menu.dao.impl;
 
 import menu.dao.UserDao;
-import menu.domain.Equipment;
 import menu.domain.User;
 import menu.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
+import java.util.Map;
 
 public class UserDaoImpl implements UserDao {
 
@@ -29,16 +29,16 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void add(User user) {
         //添加用户
-        String sql = "insert into user values(null,?,?,?)";
-        template.update(sql, user.getUsername(), user.getOpenid(), user.getAddtime());
+        String sql = "insert into user values(null,?,?)";
+        template.update(sql, user.getOpenid(), user.getAddtime());
     }
 
     @Override
-    public List<Equipment> findbyuser(Integer id) {
+    public List<Map<String,Object>> list(Integer id) {
         //通过用户id查询所拥有的设备
-        String sql = "select * from user where user_id = ?";
-        List<Equipment> equipments = template.query(sql, new BeanPropertyRowMapper<>(Equipment.class),id);
-        return equipments;
+        String sql = "select equi_id and equi_name from contain, equipment where user_id = ? and equipment.id = contain.equi_id";
+        List<Map<String,Object>> list = template.queryForList(sql,id);
+        return list;
     }
 
     @Override
