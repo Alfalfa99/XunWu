@@ -20,4 +20,9 @@ public interface MemoService {
      * 展示该台设备的全部丢失记录
      */
     List<Map<String,Object>> findbyequi_id(Integer id);
+
+    /**
+     * 更改设备丢失记录
+     */
+    void change_name(Integer id, String name);
 }

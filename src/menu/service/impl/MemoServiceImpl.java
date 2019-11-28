@@ -24,4 +24,9 @@ public class MemoServiceImpl implements MemoService {
     public List<Map<String, Object>> findbyequi_id(Integer id) {
         return memoDao.findbyequi_id(id);
     }
+
+    @Override
+    public void change_name(Integer id, String name) {
+        memoDao.change_name(id, name);
+    }
 }

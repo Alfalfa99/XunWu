@@ -21,4 +21,8 @@ public interface MemoDao {
      */
     List<Map<String,Object>> findbyequi_id(Integer id);
 
+    /**
+     * 更改设备丢失记录
+     */
+    void change_name(Integer id, String name);
 }

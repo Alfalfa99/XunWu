@@ -32,4 +32,10 @@ public class MemoDaoImpl implements MemoDao {
         return memos;
     }
 
+    @Override
+    public void change_name(Integer id, String name) {
+        String sql = "update memo set last_location = ? where id = ?";
+        template.update(sql, name, id);
+    }
+
 }
