@@ -5,7 +5,6 @@ import menu.code.test;
 import menu.domain.User;
 import menu.service.UserService;
 import menu.service.impl.UserServiceImpl;
-import menu.util.JSONUtils;
 import menu.util.MD5Utils;
 import menu.util.TimeTransformer;
 
@@ -24,15 +23,16 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
 
-        JSONUtils jsonUtils = new JSONUtils();
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> responseMap = new HashMap<String, Object>();
         HttpSession session = null;
         String code = request.getParameter("code");
         String iv = request.getParameter("iv");
+        System.out.println(code);
         String encryptedData = request.getParameter("encryptedData");
         //请求微信服务器获取用户openid以及加密秘钥
         test test = new test();
+        System.out.println("111");
         String[] strings = test.main(code);
         String openid = strings[0];
         String session_key = strings[1];

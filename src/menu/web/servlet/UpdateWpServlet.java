@@ -16,14 +16,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/updateServlet")
-public class UpdateServlet extends HttpServlet {
+@WebServlet("/updateWpServlet")
+public class UpdateWpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String token = request.getHeader("token");
 //        String openid = MD5Utils.convertMD5(token); //MD5转回字符串
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> responseMap = new HashMap<String, Object>();
-        EquipmentService equipmentService = new EquipmentServiceImpl(); //调用为设备改名方法
+        EquipmentService equipmentService = new EquipmentServiceImpl(); //调用为设备改热点名方法
         UserService userService = new UserServiceImpl();    //调用过滤方法
         User user = null;
         String openid = token;
@@ -42,7 +42,7 @@ public class UpdateServlet extends HttpServlet {
         String name = request.getParameter("name");
         equipmentService.change_name(Integer.valueOf(id),name);
         responseMap.put("state",1);
-        responseMap.put("name",name);
+        responseMap.put("Wifipassword",name);
         mapper.writeValue(response.getWriter(), responseMap);
     }
 
