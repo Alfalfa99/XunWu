@@ -21,7 +21,6 @@ public class UserDaoImpl implements UserDao {
             User user = template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), openid);
             return user;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }

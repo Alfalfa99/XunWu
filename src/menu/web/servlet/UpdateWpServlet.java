@@ -19,7 +19,7 @@ import java.util.Map;
 @WebServlet("/updateWpServlet")
 public class UpdateWpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
         String token = request.getHeader("token");
 //        String openid = MD5Utils.convertMD5(token); //MD5转回字符串
         ObjectMapper mapper = new ObjectMapper();

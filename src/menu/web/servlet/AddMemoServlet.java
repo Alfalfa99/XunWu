@@ -22,7 +22,7 @@ import java.util.Map;
 @WebServlet("/addMemoServlet")
 public class AddMemoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
         String token = request.getHeader("token");
 //        String openid = MD5Utils.convertMD5(token); //MD5转回字符串
         ObjectMapper mapper = new ObjectMapper();
@@ -38,7 +38,7 @@ public class AddMemoServlet extends HttpServlet {
             return;
         }
         user = userService.findUserByOpenid(Integer.valueOf(openid));
-        if (user.getOpenid()==null){
+        if (user==null){
             responseMap.put("state",401);
             mapper.writeValue(response.getWriter(), responseMap);
             return;

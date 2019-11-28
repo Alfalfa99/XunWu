@@ -6,7 +6,7 @@ public class Equipment {
     String equi_wifipassword;
     Integer equi_uuid;
     Integer addtime;
-    String name;
+    String equi_name;
 
     public Integer getId() {
         return id;
@@ -48,11 +48,11 @@ public class Equipment {
         this.addtime = addtime;
     }
 
-    public String getName() {
-        return name;
+    public String getEqui_name() {
+        return equi_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEqui_name(String equi_name) {
+        this.equi_name = equi_name;
     }
 }

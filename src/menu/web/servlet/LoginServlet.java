@@ -24,7 +24,7 @@ import java.util.Map;
 @WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
 
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> responseMap = new HashMap<String, Object>();
