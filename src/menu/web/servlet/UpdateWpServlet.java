@@ -25,7 +25,7 @@ public class UpdateWpServlet extends HttpServlet {
         Map<String, Object> responseMap = new HashMap<String, Object>();
         EquipmentService equipmentService = new EquipmentServiceImpl(); //调用为设备改热点名方法
         UserService userService = new UserServiceImpl();    //调用过滤方法
-        User user = null;
+        User user;
         String openid = token;
         if(openid == null){
             responseMap.put("state",401);
