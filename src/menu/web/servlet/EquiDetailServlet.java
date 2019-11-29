@@ -47,6 +47,11 @@ public class EquiDetailServlet extends HttpServlet {
         }
         String id = request.getParameter("id");
         equipment = equipmentService.find(Integer.valueOf(id));
+        if (equipment == null){
+            responseMap.put("state",-1);
+            mapper.writeValue(response.getWriter(), responseMap);
+            return;
+        }
         responseMap.put("id",equipment.getId());
         responseMap.put("name",equipment.getEqui_name());
         responseMap.put("wn",equipment.getEqui_wifiname());

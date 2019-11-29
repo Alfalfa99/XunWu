@@ -1,10 +1,13 @@
 package menu.web.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import menu.domain.Equipment;
 import menu.domain.User;
 import menu.service.ContainService;
+import menu.service.EquipmentService;
 import menu.service.UserService;
 import menu.service.impl.ContainServiceImpl;
+import menu.service.impl.EquipmentServiceImpl;
 import menu.service.impl.UserServiceImpl;
 import menu.util.MD5Utils;
 
@@ -30,6 +33,7 @@ public class DelEquiServlet extends HttpServlet {
         Map<String, Object> responseMap = new HashMap<String, Object>();
         ContainService containService = new ContainServiceImpl();   //调用解除绑定的方法
         UserService userService = new UserServiceImpl();    //调用过滤方法
+        EquipmentService equipmentService = new EquipmentServiceImpl(); //将设备名改回默认名
         User user;
         if (token == null){
             responseMap.put("state",401);
@@ -44,7 +48,14 @@ public class DelEquiServlet extends HttpServlet {
             return;
         }
         String id = request.getParameter("id");
+        if (id == null){
+            responseMap.put("state",-1);
+            mapper.writeValue(response.getWriter(), responseMap);
+            return;
+        }
         containService.delete(Integer.valueOf(id));
+        Equipment equipment = equipmentService.find(Integer.valueOf(id));
+        equipmentService.change_name(Integer.valueOf(id),String.valueOf(equipment.getEqui_uuid())); //解除绑定后设置为默认名
         responseMap.put("state",1);
         mapper.writeValue(response.getWriter(), responseMap);
     }

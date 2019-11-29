@@ -5,7 +5,7 @@ public class Equipment {
     String equi_wifiname;
     String equi_wifipassword;
     Integer equi_uuid;
-    Integer addtime;
+    Long addtime;
     String equi_name;
 
     public Integer getId() {
@@ -40,11 +40,11 @@ public class Equipment {
         this.equi_uuid = equi_uuid;
     }
 
-    public Integer getAddtime() {
+    public Long getAddtime() {
         return addtime;
     }
 
-    public void setAddtime(Integer addtime) {
+    public void setAddtime(Long addtime) {
         this.addtime = addtime;
     }
 

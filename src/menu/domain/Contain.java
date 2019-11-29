@@ -4,7 +4,7 @@ public class Contain {
     private Integer id;
     private Integer user_id;
     private Integer equi_id;
-    private Integer addtime;
+    private Long addtime;
     private String md5;
 
     public String getMd5() {
@@ -39,11 +39,11 @@ public class Contain {
         this.equi_id = equi_id;
     }
 
-    public Integer getAddtime() {
+    public Long getAddtime() {
         return addtime;
     }
 
-    public void setAddtime(Integer addtime) {
+    public void setAddtime(Long addtime) {
         this.addtime = addtime;
     }
 }

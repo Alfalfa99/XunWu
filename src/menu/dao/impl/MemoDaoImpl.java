@@ -44,8 +44,6 @@ public class MemoDaoImpl implements MemoDao {
         try {
             String sql = "select * from memo where equi_id = ? and last_location = ?";
             Memo memo = template.queryForObject(sql, new BeanPropertyRowMapper<Memo>(Memo.class), equi_id,location);
-            System.out.println(memo.getEqui_id());
-            System.out.println(memo.getLast_location());
             return memo;
         } catch (Exception e) {
             return null;

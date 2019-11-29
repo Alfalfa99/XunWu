@@ -45,18 +45,15 @@ public class FindAllMemoServlet extends HttpServlet {
             return;
         }
 
-        try {
-            String id = request.getHeader("id");
-            responseMap.put("state",1);
-            responseMap.put("list",memoService.findbyequi_id(Integer.valueOf(id)));
-            mapper.writeValue(response.getWriter(), responseMap);
-        } catch (NumberFormatException e) {
+        String id = request.getParameter("id");
+        if (id == null){
             responseMap.put("state",-1);
             mapper.writeValue(response.getWriter(), responseMap);
-        } catch (IOException e) {
-            responseMap.put("state",-1);
-            mapper.writeValue(response.getWriter(), responseMap);
+            return;
         }
+        responseMap.put("state",1);
+        responseMap.put("list",memoService.findbyequi_id(Integer.valueOf(id)));
+        mapper.writeValue(response.getWriter(), responseMap);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -4,7 +4,7 @@ public class Memo {
     private Integer id;
     private Integer equi_id;
     private String last_location;
-    private Integer addtime;
+    private Long addtime;
 
     public Integer getId() {
         return id;
@@ -30,11 +30,11 @@ public class Memo {
         this.last_location = last_location;
     }
 
-    public Integer getAddtime() {
+    public Long getAddtime() {
         return addtime;
     }
 
-    public void setAddtime(Integer addtime) {
+    public void setAddtime(Long addtime) {
         this.addtime = addtime;
     }
 

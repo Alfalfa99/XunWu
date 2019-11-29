@@ -3,7 +3,7 @@ package menu.domain;
 public class User {
     private Integer id;
     private String openid;
-    private Integer addtime;
+    private Long addtime;
     private String md5;
 
     public Integer getId() {
@@ -22,11 +22,11 @@ public class User {
         this.openid = openid;
     }
 
-    public Integer getAddtime() {
+    public Long getAddtime() {
         return addtime;
     }
 
-    public void setAddtime(Integer addtime) {
+    public void setAddtime(Long addtime) {
         this.addtime = addtime;
     }
 

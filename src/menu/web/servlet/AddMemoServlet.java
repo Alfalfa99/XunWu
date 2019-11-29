@@ -45,17 +45,17 @@ public class AddMemoServlet extends HttpServlet {
             return;
         }
         String id = request.getParameter("id");
-        String location = request.getParameter("location");
-        String timeStamp = request.getParameter("timeStamp");
+        String location = request.getParameter("name");
+        String timeStamp = request.getParameter("time");
         memo.setEqui_id(Integer.valueOf(id));
         memo.setLast_location(location);
-        memo.setAddtime(Integer.valueOf(timeStamp));
+        memo.setAddtime(Long.valueOf(timeStamp));
         memoService.add(memo);
         memo = memoService.get_id(memo.getEqui_id(),memo.getLast_location());
         responseMap.put("state",1);
         responseMap.put("id",memo.getId());
-        responseMap.put("location",memo.getLast_location());
-        responseMap.put("TimeStamp",memo.getAddtime());
+        responseMap.put("name",memo.getLast_location());
+        responseMap.put("time",memo.getAddtime());
         mapper.writeValue(response.getWriter(), responseMap);
     }
 
