@@ -50,4 +50,10 @@ public class MemoDaoImpl implements MemoDao {
         }
     }
 
+    @Override
+    public void deleteMemo(Integer equi_id) {
+        String sql = "delete from memo where equi_id = ?";
+        template.update(sql, equi_id);
+    }
+
 }

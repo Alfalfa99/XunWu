@@ -5,9 +5,11 @@ import menu.domain.Equipment;
 import menu.domain.User;
 import menu.service.ContainService;
 import menu.service.EquipmentService;
+import menu.service.MemoService;
 import menu.service.UserService;
 import menu.service.impl.ContainServiceImpl;
 import menu.service.impl.EquipmentServiceImpl;
+import menu.service.impl.MemoServiceImpl;
 import menu.service.impl.UserServiceImpl;
 import menu.util.MD5Utils;
 
@@ -34,6 +36,7 @@ public class DelEquiServlet extends HttpServlet {
         ContainService containService = new ContainServiceImpl();   //调用解除绑定的方法
         UserService userService = new UserServiceImpl();    //调用过滤方法
         EquipmentService equipmentService = new EquipmentServiceImpl(); //将设备名改回默认名
+        MemoService memoService = new MemoServiceImpl();    //删除该设备的全部记录
         User user;
         if (token == null){
             responseMap.put("state",401);
@@ -56,6 +59,7 @@ public class DelEquiServlet extends HttpServlet {
         containService.delete(Integer.valueOf(id));
         Equipment equipment = equipmentService.find(Integer.valueOf(id));
         equipmentService.change_name(Integer.valueOf(id),String.valueOf(equipment.getEqui_uuid())); //解除绑定后设置为默认名
+        memoService.deleteMemo(Integer.valueOf(id));
         responseMap.put("state",1);
         mapper.writeValue(response.getWriter(), responseMap);
     }

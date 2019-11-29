@@ -30,4 +30,9 @@ public interface MemoDao {
      * 获得某次丢失记录的id
      */
     Memo get_id(Integer equi_id, String location);
+
+    /**
+     * 删除设备的全部记录
+     */
+    void deleteMemo(Integer equi_id);
 }

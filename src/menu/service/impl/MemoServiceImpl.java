@@ -34,4 +34,9 @@ public class MemoServiceImpl implements MemoService {
     public Memo get_id(Integer equi_id, String location) {
         return memoDao.get_id(equi_id,location);
     }
+
+    @Override
+    public void deleteMemo(Integer equi_id) {
+        memoDao.deleteMemo(equi_id);
+    }
 }
