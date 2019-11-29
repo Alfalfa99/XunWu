@@ -6,6 +6,7 @@ import menu.service.EquipmentService;
 import menu.service.UserService;
 import menu.service.impl.EquipmentServiceImpl;
 import menu.service.impl.UserServiceImpl;
+import menu.util.MD5Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,26 +19,26 @@ import java.util.Map;
 
 /**
  * 更新设备名方法
+ * post
  */
 @WebServlet("/updateServlet")
 public class UpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
         String token = request.getHeader("token");
-//        String openid = MD5Utils.convertMD5(token); //MD5转回字符串
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> responseMap = new HashMap<String, Object>();
         EquipmentService equipmentService = new EquipmentServiceImpl(); //调用为设备改名方法
         UserService userService = new UserServiceImpl();    //调用过滤方法
-        User user = null;
-        String openid = token;
-        if(openid == null){
+        User user;
+        if (token == null){
             responseMap.put("state",401);
             mapper.writeValue(response.getWriter(), responseMap);
             return;
         }
-        user = userService.findUserByOpenid(Integer.valueOf(openid));
-        if (user.getOpenid()==null){
+        String md5 = MD5Utils.convertMD5(MD5Utils.convertMD5(token)); //MD5转回字符串
+        user = userService.findUserByMd5(md5);
+        if (user==null){
             responseMap.put("state",401);
             mapper.writeValue(response.getWriter(), responseMap);
             return;

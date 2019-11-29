@@ -6,6 +6,7 @@ import menu.service.ContainService;
 import menu.service.UserService;
 import menu.service.impl.ContainServiceImpl;
 import menu.service.impl.UserServiceImpl;
+import menu.util.MD5Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,26 +19,26 @@ import java.util.Map;
 
 /**
  * 解除设备绑定
+ * post
  */
 @WebServlet("/delEquiServlet")
 public class DelEquiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
         String token = request.getHeader("token");
-//        String openid = MD5Utils.convertMD5(token); //MD5转回字符串
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> responseMap = new HashMap<String, Object>();
         ContainService containService = new ContainServiceImpl();   //调用解除绑定的方法
         UserService userService = new UserServiceImpl();    //调用过滤方法
         User user;
-        String openid = token;
-        if(openid == null){
+        if (token == null){
             responseMap.put("state",401);
             mapper.writeValue(response.getWriter(), responseMap);
             return;
         }
-        user = userService.findUserByOpenid(Integer.valueOf(openid));
-        if (user.getOpenid()==null){
+        String md5 = MD5Utils.convertMD5(MD5Utils.convertMD5(token)); //MD5转回字符串
+        user = userService.findUserByMd5(md5);
+        if (user==null){
             responseMap.put("state",401);
             mapper.writeValue(response.getWriter(), responseMap);
             return;

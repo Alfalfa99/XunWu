@@ -12,7 +12,7 @@ public interface UserService {
     /**
      * 查询用户所有的设备
      */
-    List<Map<String,Object>> list(Integer id);
+    List<Map<String,Object>> list(String id);
 
     /**
      * 增加用户
@@ -22,10 +22,15 @@ public interface UserService {
     /**
      * 删除用户
      */
-    void delete(Integer openid);
+    void delete(String openid);
 
     /**
      * 查询是否有该用户
      */
-    public User findUserByOpenid(Integer openid);
+    User findUserByOpenid(String openid);
+
+    /**
+     * 用md5
+     */
+    User findUserByMd5(String md5);
 }

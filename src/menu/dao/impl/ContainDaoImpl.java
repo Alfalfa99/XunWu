@@ -13,8 +13,8 @@ public class ContainDaoImpl implements ContainDao {
 
     @Override
     public void add(Contain contain) {
-        String sql = "insert into contain values(null,?,?,?)";
-        template.update(sql, contain.getUser_id(), contain.getEqui_id(),contain.getAddtime());
+        String sql = "insert into contain values(null,?,?,?,?)";
+        template.update(sql, contain.getUser_id(), contain.getEqui_id(),contain.getAddtime(),contain.getMd5());
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ContainDaoImpl implements ContainDao {
     public Contain search(Integer equi_id) {
         try {
             String sql = "select * from contain where equi_id = ?";
-            Contain contain = template.queryForObject(sql, new BeanPropertyRowMapper<Contain>(Contain.class), equi_id);
+            Contain contain = template.queryForObject(sql, new BeanPropertyRowMapper<>(Contain.class), equi_id);
             return contain;
         } catch (Exception e) {
             return null;

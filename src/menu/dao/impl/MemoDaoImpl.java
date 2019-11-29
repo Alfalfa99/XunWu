@@ -3,6 +3,7 @@ package menu.dao.impl;
 import menu.dao.MemoDao;
 import menu.domain.Memo;
 import menu.util.JDBCUtils;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -36,6 +37,19 @@ public class MemoDaoImpl implements MemoDao {
     public void change_name(Integer id, String name) {
         String sql = "update memo set last_location = ? where id = ?";
         template.update(sql, name, id);
+    }
+
+    @Override
+    public Memo get_id(Integer equi_id, String location) {
+        try {
+            String sql = "select * from memo where equi_id = ? and last_location = ?";
+            Memo memo = template.queryForObject(sql, new BeanPropertyRowMapper<Memo>(Memo.class), equi_id,location);
+            System.out.println(memo.getEqui_id());
+            System.out.println(memo.getLast_location());
+            return memo;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }

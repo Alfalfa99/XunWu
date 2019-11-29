@@ -10,7 +10,7 @@ public interface UserDao {
     /**
      * 用户登录
      */
-    User findUserByOpenid(Integer openid);
+    User findUserByOpenid(String openid);
 
     /**
      * 添加用户
@@ -21,10 +21,15 @@ public interface UserDao {
     /**
      * 用户拥有的所有设备
      */
-    List<Map<String,Object>> list(Integer id);
+    List<Map<String,Object>> list(String openid);
 
     /**
      * 删除用户
      */
-    void delete(Integer openid);
+    void delete(String openid);
+
+    /**
+     * 用md5
+     */
+    User findUserByMd5(String md5);
 }

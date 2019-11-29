@@ -25,4 +25,9 @@ public interface MemoService {
      * 更改设备丢失记录
      */
     void change_name(Integer id, String name);
+
+    /**
+     * 获得某次丢失记录的id
+     */
+    Memo get_id(Integer equi_id, String location);
 }

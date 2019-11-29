@@ -13,8 +13,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<Map<String, Object>> list(Integer id) {
-        return dao.list(id);
+    public List<Map<String, Object>> list(String openid) {
+        return dao.list(openid);
     }
 
     @Override
@@ -23,12 +23,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Integer openid) {
+    public void delete(String openid) {
         dao.delete(openid);
     }
 
     @Override
-    public User findUserByOpenid(Integer openid) {
+    public User findUserByOpenid(String openid) {
         return dao.findUserByOpenid(openid);
+    }
+
+    @Override
+    public User findUserByMd5(String md5) {
+        return dao.findUserByMd5(md5);
     }
 }
