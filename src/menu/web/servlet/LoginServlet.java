@@ -7,7 +7,6 @@ import menu.service.UserService;
 import menu.service.impl.UserServiceImpl;
 import menu.util.MD5Utils;
 import menu.util.TimeTransformer;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
